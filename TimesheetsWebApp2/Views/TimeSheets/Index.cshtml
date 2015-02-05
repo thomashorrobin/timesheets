@@ -1,0 +1,58 @@
+﻿@model IEnumerable<TimesheetsWebApp2.TimeSheet>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Timesheets for @(ViewBag.ShopName)</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new { ShopId = ViewBag.ShopId })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ColorShop.ShopName)
+        </th>*@
+        <th>
+            Prepared By
+        </th>
+        <th>
+            Approved By
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimesheetFileName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeSheetId)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ColorShop.ShopName)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.EmployeeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee1.EmployeeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimesheetFileName)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
+            @Html.ActionLink("Details", "Details", new { id=item.TimeSheetId }) | 
+            @Html.ActionLink("Employees", "Index", "WeeklyTotals", new { TimesheetId = item.TimeSheetId }, new object { })
+            @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+        </td>
+    </tr>
+}
+
+</table>

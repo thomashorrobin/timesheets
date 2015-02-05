@@ -1,0 +1,99 @@
+﻿@model TimesheetsWebApp2.Models.NewTimesheetModel
+
+@{
+    //ViewBag.Title = "NewTimesheet";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>@ViewBag.SubTitle</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.ShopId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ShopId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ShopId, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.WeekStarting, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Mondays", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.WeekStarting, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        @*<div class="form-group">
+        @Html.LabelFor(model => model.PreparedBy, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PreparedBy, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PreparedBy, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <hr />*@
+        <div class="row">
+            @foreach (EmployeeWeek item in ViewBag.DaysInTheWeek2)
+            {
+                <div class="col-md-3" style="border:1px dotted black; margin: 1px 0px 1px 0px">
+                    <h4>@item.name</h4>
+                    <div class="col-md-12">
+                        @foreach (HoursWorked s in item.Hours)
+                        {
+                            <div>
+                                <div class="row">
+                                    <p>@s.DateWorked.DayOfWeek (@(s.TotalHoursWorked) hr)</p>
+                                    @*<input type="time" name="start" value="00:00 am" />
+                                    <input type="time" name="end" value="00:00 am" />*@
+                                </div>
+                            </div>
+                        }
+                        @Html.ActionLink("Edit " + item.name + "'s hours", "EditWeek", "WeeklyTotals", new { ShopId = item.ShopId, EmployeeId = item.EmployeeId, WeekStarting = item.WeekStarting }, new object { })
+                    </div>
+                </div>
+            }
+        </div>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            <div class="col-md-offset-2 col-md-5">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>*@
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                Approve <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Approve</a></li>
+                <li><a href="#">Approve and Submit</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Lock timesheet</a></li>
+            </ul>
+        </div>
+    </div>
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

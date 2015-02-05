@@ -1,0 +1,100 @@
+﻿@model IEnumerable<TimesheetsWebApp2.HoursWorked>
+
+@{
+    //ViewBag.Title = "EditWeek";
+}
+
+<h2>@ViewBag.Title</h2>
+<h4>@ViewBag.SubTitle</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ColorShop.ShopName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.EmployeeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Breaks)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.TotalMinutesWorked)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalRegularMinutesWorked)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalOvertimeMinutesWorked)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.TotalHoursWorked)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalRegularWorked)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalOvertimeWorked)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ColorShop.ShopName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.EmployeeName)
+        </td>
+        <td>
+            <input type="time" name="StartTime" value="@(item.StartTime)" />
+            @*@Html.DisplayFor(modelItem => item.StartTime)*@
+        </td>
+        <td>
+            <input type="time" name="EndTime" value="@(item.EndTime)" />
+            @*@Html.DisplayFor(modelItem => item.EndTime)*@
+        </td>
+        <td>
+            <input type="number" name="Breaks" value="@(item.Breaks)" />
+            @*@Html.DisplayFor(modelItem => item.Breaks)*@
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.TotalMinutesWorked)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalRegularMinutesWorked)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalOvertimeMinutesWorked)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalHoursWorked)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalRegularWorked)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalOvertimeWorked)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+        </td>
+    </tr>
+}
+
+</table>
+
+<div class="btn">
+    <button type="button" class="btn btn-success">
+        Save
+    </button>
+</div>

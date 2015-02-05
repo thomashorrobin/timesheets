@@ -1,0 +1,74 @@
+﻿@model TimesheetsWebApp2.TimeSheet
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TimeSheet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ColorShop.ShopName)
+        </dt> 
+
+        <dd>
+            @Html.DisplayFor(model => model.ColorShop.ShopName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WeekStarting)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WeekStarting)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.EmployeeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.EmployeeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee1.EmployeeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee1.EmployeeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeSheetId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeSheetId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimesheetFileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimesheetFileName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

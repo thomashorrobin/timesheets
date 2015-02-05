@@ -1,0 +1,33 @@
+﻿@model IEnumerable<TimesheetsWebApp2.ColorShop>
+
+@{
+    ViewBag.Title = "ColorShops";
+}
+
+<h2>ColorShops</h2>
+
+<p>
+    @Html.ActionLink("Add New ColorShop", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ShopName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShopName)
+        </td>
+        <td>
+            @Html.ActionLink("View Timesheets", "Index", "Timesheets", new { ShopId = item.ShopId }, new object { })
+            @*@Html.ActionLink("Details", "Details", new { id=item.ShopId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ShopId })*@
+        </td>
+    </tr>
+}
+
+</table>

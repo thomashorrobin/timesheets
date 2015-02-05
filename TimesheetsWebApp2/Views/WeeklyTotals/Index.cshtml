@@ -1,0 +1,76 @@
+﻿@model IEnumerable<TimesheetsWebApp2.WeeklyTotal>
+
+@{
+    //ViewBag.Title = "Index";
+}
+
+<h2>@ViewBag.Title</h2>
+<h4>@ViewBag.SubTitle</h4>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.EmployeeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegularHoursTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OvertimeHoursTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnnualLeaveHours)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SickLeaveHours)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OtherLeaveHours)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeekStarting)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ShopId)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @(item.Employee.EmployeeName + item.Employee.ShopsWorkedAt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegularHoursTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OvertimeHoursTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnnualLeaveHours)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SickLeaveHours)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtherLeaveHours)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WeekStarting)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ShopId)
+        </td>*@
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+        </td>
+    </tr>
+}
+
+</table>
